@@ -4,6 +4,7 @@ const userSchema = require('../modules/usermodel');
 const bcrypt = require('bcrypt');
 const jwt=require('jsonwebtoken');
 const msgSchema = require('../modules/messageModel');
+const verifyToken=require('../Middleware/Authentication')
 
 route.post('/register', async (req, res) => {
     try {
@@ -69,7 +70,7 @@ route.post('/login',async(req,res)=>{
     }
 })
 
-route.post('/setAvatar/:id',async(req,res)=>{
+route.post('/setAvatar/:id',verifyToken,async(req,res)=>{
      try{
         const userID=req.params.id;
         const user=await userSchema.findOneAndUpdate({_id:userID},{
@@ -97,7 +98,7 @@ route.post('/setAvatar/:id',async(req,res)=>{
      }
 })
 
-route.get('/getAllContact/:id',async(req,res)=>{
+route.get('/getAllContact/:id',verifyToken,async(req,res)=>{
     try{
         const users=await userSchema.find({_id:{$ne:req.params.id}}).select([
             "email",
@@ -127,7 +128,7 @@ route.get('/getAllContact/:id',async(req,res)=>{
     }
 })
 
-route.post('/addmsg', async (req, res) => {
+route.post('/addmsg',verifyToken, async (req, res) => {
     try {
         const { from, to, msg } = req.body;
         
@@ -148,7 +149,7 @@ route.post('/addmsg', async (req, res) => {
     }
 });
 
-route.post('/getAllmsg',async(req,res)=>{
+route.post('/getAllmsg',verifyToken,async(req,res)=>{
     try{
         const {from,to}=req.body;
         const messages=await msgSchema.find({

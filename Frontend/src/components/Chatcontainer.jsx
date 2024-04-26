@@ -18,7 +18,10 @@ function Chatcontainer(props) {
       const response=await axios.post('http://localhost:9000/getAllmsg',{
         from:user._id,
         to:props.currentchat._id
-      })
+      },{headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+    }})
       setMessage(response.data);
     }
     fetchmsg();
@@ -29,7 +32,10 @@ function Chatcontainer(props) {
       from:user._id,
       to:props.currentchat._id,
       msg:msg
-    })
+    },{headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+  }})
     props.socket.current.emit("send-msg",{
       to:props.currentchat._id,
       from:user._id,

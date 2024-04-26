@@ -31,7 +31,10 @@ function SetAvatar() {
             
             const response=await axios.post(`http://localhost:9000/setAvatar/${user._id}`,{
                 image:avatar[selectavatar]
-            })
+            },{headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+          }})
             if(response.data.isSet)
             {
                 user.isAvatarImageSet=true;

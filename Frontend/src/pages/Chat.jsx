@@ -44,7 +44,10 @@ function Chat() {
       if(currentuser.isAvatarImageSet)
       {
         const fetchContact=async()=>{
-          const response=await axios.get(`http://localhost:9000/getAllContact/${currentuser._id}`)
+          const response=await axios.get(`http://localhost:9000/getAllContact/${currentuser._id}`,{headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+        }})
           console.log(response.data)
           if(response.data.msg=="Users Found")
           {
