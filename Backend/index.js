@@ -6,8 +6,10 @@ const userEntry=require('./routes/userEntry')
 const socket=require('socket.io')
 const {Server}=require('socket.io')
 const http=require('http')
+require('dotenv').config();
+const url = process.env.USER_DB;
 
-mongoose.connect("mongodb+srv://root1:jocker22.dk@cluster01.watow3c.mongodb.net/")
+mongoose.connect(url)
 
 const con=mongoose.connection
 

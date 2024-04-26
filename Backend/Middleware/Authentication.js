@@ -5,7 +5,7 @@ const verifyToken=async(req,res,next)=>{
     const token=authtoken&&authtoken.split(' ')[1];
     if(token)
     {
-        const secretKey="yourkey";
+        const secretKey=process.env.USER_SECRET_KEY;
         jwt.verify(token,secretKey,(err,user)=>{
             if(err)
             {

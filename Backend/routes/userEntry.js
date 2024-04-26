@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const jwt=require('jsonwebtoken');
 const msgSchema = require('../modules/messageModel');
 const verifyToken=require('../Middleware/Authentication')
+require('dotenv').config();
 
 route.post('/register', async (req, res) => {
     try {
@@ -51,7 +52,7 @@ route.post('/login',async(req,res)=>{
             })
         }
         else{
-            const secretkey="yourkey";
+            const secretkey=process.env.USER_SECRET_KEY;
             const token=jwt.sign({username:user.username},secretkey);
             const result={
                 user:user,
