@@ -28,7 +28,7 @@ align-items:center;
 flex-direction:column;
 color:white;
 img{
-    height:35rem;
+    height:30rem;
 }
 span{
     color:blue;
