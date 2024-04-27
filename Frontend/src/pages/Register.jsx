@@ -51,7 +51,7 @@ function Register() {
     if (valid()) {
       const { username, email, password } = values
       try {
-        const response = await axios.post('http://localhost:9000/register', {
+        const response = await axios.post('https://chat-app-backend-nst9.onrender.com/register', {
           username,
           email,
           password

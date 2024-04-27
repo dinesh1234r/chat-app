@@ -33,7 +33,7 @@ function Chat() {
   useEffect(()=>{
     if(currentuser)
     {
-      socket.current=io("http://localhost:9000");
+      socket.current=io("https://chat-app-backend-nst9.onrender.com");
       socket.current.emit("add-user",currentuser._id);
     }
   },[currentuser])
@@ -44,7 +44,7 @@ function Chat() {
       if(currentuser.isAvatarImageSet)
       {
         const fetchContact=async()=>{
-          const response=await axios.get(`http://localhost:9000/getAllContact/${currentuser._id}`,{headers: {
+          const response=await axios.get(`https://chat-app-backend-nst9.onrender.com/getAllContact/${currentuser._id}`,{headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.getItem('jwt')}`
         }})

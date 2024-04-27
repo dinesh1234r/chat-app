@@ -29,7 +29,7 @@ function SetAvatar() {
          {
             const user=JSON.parse(localStorage.getItem('userinfo'));
             
-            const response=await axios.post(`http://localhost:9000/setAvatar/${user._id}`,{
+            const response=await axios.post(`https://chat-app-backend-nst9.onrender.com/setAvatar/${user._id}`,{
                 image:avatar[selectavatar]
             },{headers: {
               'Content-Type': 'application/json',

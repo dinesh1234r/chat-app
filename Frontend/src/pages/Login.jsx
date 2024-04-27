@@ -52,7 +52,7 @@ function Login() {
     {
       console.log("success")
       const {username,email,password}=values
-      const response=await axios.post('http://localhost:9000/login',{username,email,password})
+      const response=await axios.post('https://chat-app-backend-nst9.onrender.com/login',{username,email,password})
       if(response.data.msg=="Login Successfully")
       {
         localStorage.setItem('userinfo',JSON.stringify(response.data.user))

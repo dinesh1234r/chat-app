@@ -15,7 +15,7 @@ function Chatcontainer(props) {
     if(props.currentchat)
     {
     const fetchmsg=async()=>{
-      const response=await axios.post('http://localhost:9000/getAllmsg',{
+      const response=await axios.post('https://chat-app-backend-nst9.onrender.com/getAllmsg',{
         from:user._id,
         to:props.currentchat._id
       },{headers: {
@@ -28,7 +28,7 @@ function Chatcontainer(props) {
     }
   },[props.currentchat])
   const handleSendmsg=async(msg)=>{
-    const response=await axios.post("http://localhost:9000/addmsg",{
+    const response=await axios.post("https://chat-app-backend-nst9.onrender.com/addmsg",{
       from:user._id,
       to:props.currentchat._id,
       msg:msg
