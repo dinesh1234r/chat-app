@@ -28,7 +28,7 @@ const server = app.listen(9000, () =>
 );
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://chat-app-forntend.onrender.com",
     credentials: true,
   },
 });
